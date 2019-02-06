@@ -1,6 +1,5 @@
 <template>
     <div class="details columns">
-
         <div v-if="selected.strYoutube && youtubeCover" class="details__media col-4 col-lg-12" :key="componentKey">
             <div class="youtube" :data-embed="youtubeId">
                 <div class="play-button c-hand" @click="loadTube"></div>
@@ -23,7 +22,6 @@
 
             <p v-if="selected.strSource">Source: <a :href="selected.strSource">{{ selected.strSource }}</a></p>
         </article>  
-
     </div>
 </template>
 
