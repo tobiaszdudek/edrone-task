@@ -1,7 +1,7 @@
 <template>
     <div class="details columns">
 
-        <div v-if="selected.strYoutube && youtubeCover" class="details__media col-4 col-lg-12">
+        <div v-if="selected.strYoutube && youtubeCover" class="details__media col-4 col-lg-12" :key="componentKey">
             <div class="youtube" :data-embed="youtubeId">
                 <div class="play-button c-hand" @click="loadTube"></div>
                 <img :src="youtubeCover" class="cover c-hand">
@@ -33,6 +33,11 @@
 
     export default {
         name: "MealDetails",
+        data(){
+            return{
+                componentKey: 0
+            }
+        },
         props: {
             selected: Object
         }, 
@@ -66,10 +71,12 @@
             loadTube(){
                 //load and play video
                 lazytube(this.youtubeId);      
-            } 
-        }
+            }            
+        },
+        beforeUpdate(){
+            this.componentKey += 1;  
+        }                     
     }
-
 </script>
 
 <style lang="scss">
